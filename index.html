@@ -97,7 +97,7 @@
 		</div>
 	</section>
 
-	<audio src="images/给东北姑娘的歌.mp3" style="max-height :100%; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" id="player" controls="controls" autoplay="autoplay" loop="loop" preload="meta">Your browser does not support the audio tag.</audio>
+<audio src="images/给东北姑娘的歌.mp3" style="max-height :100%; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" id="audios" controls="controls" autoplay="autoplay" loop="loop" preload="meta">Your browser does not support the audio tag.</audio>
 	
 	<!-- Footer -->
 	<section id="footer">
@@ -122,70 +122,14 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
-		<script>
+                <script>
 			document.addEventListener('WeixinJSBridgeReady', function() {
-				document.getElementById('player').play()
+				document.getElementById('audios').play()
 			})
 
 			document.addEventListener('touchstart', function() {
-				document.getElementById('player').play()
+				document.getElementById('audios').play()
 			})
-		</script>
-
-		<script>
-			export default {
-				data () {
-					return {
-						g:'',
-						gd:{
-							up:null,
-							down:null
-						},
-						p:null,
-						lrc:"[00:00.000] 作曲 : 房子帆\n[00:00.702] 作词 : 房子帆\n[00:02.107]编曲：房子帆\n[00:11.133]温柔的你，撩动我心\n[00:17.400]抢我灵魂，不留痕迹\n[00:17.650]虚华世界，想你的夜\n[00:29.183]念火太烈，无法熄灭\n[00:37.207]可爱的你，繁华不比\n[00:44.980]语无伦次，无法呼吸\n[00:52.254]静雅的你，身上香气\n[01:00.527]好像有光，让我靠近\n[01:07.294]离开了你，不止可惜\n[01:15.569]下雨的街，我好想你\n[01:23.841]平行世界，你的XX\n[01:30.358]离得太远，想的太浅",
-						lrcObj:null,
-						height:'auto'
-					}
-				},
-				mounted(){
-					this.p = document.querySelector("#player")
-					let _this = this;
-					this.lrcObj = this.jx();
-					console.log(this.lrcObj);
-					this.p.addEventListener("timeupdate",function(){
-						let obj = _this.lrcObj[Math.floor(this.currentTime)];
-						if(obj!=undefined){
-							_this.g = obj;
-						}
-					});
-					this.height =window.innerHeight+'px'
-					window.onresize  = ()=>{
-						_this.height =window.innerHeight+'px'
-					}
-				},
-				methods:{
-					jx(){
-						var lyrics = this.lrc.split("\n");
-						var lrcObj = {};
-						for(var i=0;i<lyrics.length;i++){
-							var lyric = decodeURIComponent(lyrics[i]);
-							var timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g;
-							var timeRegExpArr = lyric.match(timeReg);
-							if(!timeRegExpArr)continue;
-							var clause = lyric.replace(timeReg,'');
-							for(var k = 0,h = timeRegExpArr.length;k < h;k++) {
-								var t = timeRegExpArr[k];
-								var min = Number(String(t.match(/\[\d*/i)).slice(1)),
-								sec = Number(String(t.match(/\:\d*/i)).slice(1));
-								var time = min * 60 + sec;
-								lrcObj[time] = clause;
-							}
-						}
-						return lrcObj;
-					}
-				}
-
-			}
 		</script>
 	</body>
 	</html>
