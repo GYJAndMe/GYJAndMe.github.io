@@ -97,8 +97,8 @@
 		</div>
 	</section>
 
-<audio src="images/给东北姑娘的歌.mp3" style="max-height :100%; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" controls="controls" autoplay="autoplay" loop="loop" preload="meta">Your browser does not support the audio tag.</audio>
-<iframe src = "images/给东北姑娘的歌.mp3" allow = "autoplay"/>
+	<audio src="images/给东北姑娘的歌.mp3" style="max-height :100%; max-width: 100%; display: block; margin-left: auto; margin-right: auto;" controls="controls" autoplay="autoplay" id="audios" loop="loop" preload="meta">Your browser does not support the audio tag.</audio>
+
 	<!-- Footer -->
 	<section id="footer">
 				<!-- 
@@ -122,6 +122,15 @@
 		<script src="assets/js/breakpoints.min.js"></script>
 		<script src="assets/js/util.js"></script>
 		<script src="assets/js/main.js"></script>
+		<script>
+			document.addEventListener('WeixinJSBridgeReady', function() {
+				document.getElementById('audios').play()
+			})
+
+			document.addEventListener('touchstart', function() {
+				document.getElementById('audios').play()
+			})
+		</script>
 
 	</body>
 	</html>

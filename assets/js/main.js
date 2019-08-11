@@ -20,13 +20,7 @@
 	});
 
 
-	document.addEventListener('WeixinJSBridgeReady', function() {
-		document.getElementById('audios').play()
-	})
 
-	document.addEventListener('touchstart', function() {
-		document.getElementById('audios').play()
-	})
 	
 	// Play initial animations on page load.
 	$window.on('load', function() {
